@@ -51,33 +51,6 @@ function edit_link( $link_id = 0 ) {
 	}
 }
 
-/**
-	$link->link_visible = 'Y';
-	 * @param int $link_id ID of the link to delete.
-	 */
-	do_action( 'delete_link', $link_id );
-
-	wp_delete_object_term_relationships( $link_id, 'link_category' );
-
-	$wpdb->delete( $wpdb->links, array( 'link_id' => $link_id ) );
-
-	/**
-	 * Fires after a link has been deleted.
-	 *
-	 * @since 2.2.0
-	 *
-	 * @param int $link_id ID of the deleted link.
-	 */
-	do_action( 'deleted_link', $link_id );
-
-	clean_bookmark_cache( $link_id );
-
-	return true;
-}
-
-/**
- * Retrieves the link categories associated with the link specified.
- *
  * @since 2.1.0
  *
  * @param int $link_id Link ID to look up
