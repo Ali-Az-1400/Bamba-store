@@ -53,27 +53,6 @@ function edit_link( $link_id = 0 ) {
 
 /**
 	$link->link_visible = 'Y';
-
-	return $link;
-}
-
-/**
- * Deletes a specified link from the database.
- *
- * @since 2.0.0
- *
- * @global wpdb $wpdb WordPress database abstraction object.
- *
- * @param int $link_id ID of the link to delete
- * @return true Always true.
- */
-function wp_delete_link( $link_id ) {
-	global $wpdb;
-	/**
-	 * Fires before a link is deleted.
-	 *
-	 * @since 2.0.0
-	 *
 	 * @param int $link_id ID of the link to delete.
 	 */
 	do_action( 'delete_link', $link_id );
