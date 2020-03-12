@@ -37,27 +37,6 @@ function edit_link( $link_id = 0 ) {
 	$_POST['link_url']   = esc_html( $_POST['link_url'] );
 	$_POST['link_url']   = esc_url( $_POST['link_url'] );
 	$_POST['link_name']  = esc_html( $_POST['link_name'] );
-	$_POST['link_image'] = esc_html( $_POST['link_image'] );
-	$_POST['link_rss']   = esc_url( $_POST['link_rss'] );
-	if ( ! isset( $_POST['link_visible'] ) || 'N' != $_POST['link_visible'] ) {
-		$_POST['link_visible'] = 'Y';
-	}
-
-	if ( ! empty( $link_id ) ) {
-		$_POST['link_id'] = $link_id;
-		return wp_update_link( $_POST );
-	} else {
-		return wp_insert_link( $_POST );
-	}
-}
-
- * @since 2.1.0
- *
- * @param int $link_id Link ID to look up
- * @return array The requested link's categories
- */
-function wp_get_link_cats( $link_id = 0 ) {
-	return array_unique( $cats );
 }
 
 /**
