@@ -52,26 +52,6 @@ function edit_link( $link_id = 0 ) {
 }
 
 /**
- * Retrieves the default link for editing.
- *
- * @since 2.0.0
- *
- * @return stdClass Default link object.
- */
-function get_default_link_to_edit() {
-	$link = new stdClass;
-	if ( isset( $_GET['linkurl'] ) ) {
-		$link->link_url = esc_url( wp_unslash( $_GET['linkurl'] ) );
-	} else {
-		$link->link_url = '';
-	}
-
-	if ( isset( $_GET['name'] ) ) {
-		$link->link_name = esc_attr( wp_unslash( $_GET['name'] ) );
-	} else {
-		$link->link_name = '';
-	}
-
 	$link->link_visible = 'Y';
 
 	return $link;
