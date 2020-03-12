@@ -1,1 +1,1 @@
-# Bamba-store
+# Bamba Store
