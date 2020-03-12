@@ -1,39 +1,3 @@
-	$link_url  = $parsed_args['link_url'];
-
-	$update = false;
-	if ( ! empty( $link_id ) ) {
-		$update = true;
-	}
-
-	if ( trim( $link_name ) == '' ) {
-		if ( trim( $link_url ) != '' ) {
-			$link_name = $link_url;
-		} else {
-			return 0;
-		}
-	}
-
-	if ( trim( $link_url ) == '' ) {
-		return 0;
-	}
-
-	$link_rating      = ( ! empty( $parsed_args['link_rating'] ) ) ? $parsed_args['link_rating'] : 0;
-	$link_image       = ( ! empty( $parsed_args['link_image'] ) ) ? $parsed_args['link_image'] : '';
-	$link_target      = ( ! empty( $parsed_args['link_target'] ) ) ? $parsed_args['link_target'] : '';
-	$link_visible     = ( ! empty( $parsed_args['link_visible'] ) ) ? $parsed_args['link_visible'] : 'Y';
-	$link_owner       = ( ! empty( $parsed_args['link_owner'] ) ) ? $parsed_args['link_owner'] : get_current_user_id();
-	$link_notes       = ( ! empty( $parsed_args['link_notes'] ) ) ? $parsed_args['link_notes'] : '';
-	$link_description = ( ! empty( $parsed_args['link_description'] ) ) ? $parsed_args['link_description'] : '';
-	$link_rss         = ( ! empty( $parsed_args['link_rss'] ) ) ? $parsed_args['link_rss'] : '';
-	$link_rel         = ( ! empty( $parsed_args['link_rel'] ) ) ? $parsed_args['link_rel'] : '';
-	$link_category    = ( ! empty( $parsed_args['link_category'] ) ) ? $parsed_args['link_category'] : array();
-
-	// Make sure we set a valid category.
-	if ( ! is_array( $link_category ) || 0 == count( $link_category ) ) {
-		$link_category = array( get_option( 'default_link_category' ) );
-	}
-
-	if ( $update ) {
 		if ( false === $wpdb->update( $wpdb->links, compact( 'link_url', 'link_name', 'link_image', 'link_target', 'link_description', 'link_visible', 'link_rating', 'link_rel', 'link_notes', 'link_rss' ), compact( 'link_id' ) ) ) {
 			if ( $wp_error ) {
 				return new WP_Error( 'db_update_error', __( 'Could not update link in the database' ), $wpdb->last_error );
